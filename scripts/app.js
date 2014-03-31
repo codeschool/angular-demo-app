@@ -70,5 +70,12 @@
         templateUrl: 'product-gallery.html',
       };
     })
+    .directive("productPanels", function(){
+      return {
+        replace: true,
+        restrict: 'E',
+        templateUrl: 'product-panels.html',
+      };
+    })
   ; // END module(store)
 })();
