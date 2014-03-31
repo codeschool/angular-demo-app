@@ -23,17 +23,6 @@
         },
       ];
     })
-    .controller("PanelController", function(){
-      var current = 1;
-
-      this.setCurrent = function(index){
-        current = index;
-      };
-
-      this.isCurrent = function(index){
-        return index === current;
-      };
-    })
     .controller("ReviewController", function(){
       this.review = { };
 
@@ -74,6 +63,18 @@
       return {
         replace: true,
         restrict: 'E',
+        controller: function(){
+          var current = 1;
+
+          this.setCurrent = function(index){
+            current = index;
+          };
+
+          this.isCurrent = function(index){
+            return index === current;
+          ;
+        },
+        controllerAs: 'panels',
         templateUrl: 'product-panels.html',
       };
     })
