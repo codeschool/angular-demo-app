@@ -9,7 +9,7 @@
 <body class="container">
   <ul class="products list-unstyled" ng-controller="StoreController as store">
     <li ng-repeat="product in store.products">
-      <h3> {{product.name}} <em class="pull-right">{{product.price | currency}}</em> </h3>
+      <h3> <product-title /> </h3>
 
       <section class="images" ng-controller="GalleryController as gallery" ng-show="product.images.length">
         <img class="full" ng-src="{{image.full}}" ng-repeat="image in product.images" ng-show="gallery.isCurrent(image)">

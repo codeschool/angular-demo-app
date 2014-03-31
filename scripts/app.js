@@ -47,5 +47,13 @@
         this.review = { };
       }
     })
+
+    .directive("productTitle", function(){
+      return {
+        replace: true,
+        restrict: 'E',
+        templateUrl: 'product-title.html',
+      };
+    })
   ; // END module(store)
 })();
