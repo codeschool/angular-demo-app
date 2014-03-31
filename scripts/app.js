@@ -10,7 +10,10 @@
           ],
           description: "This product is awesome!",
           specifications: "Filled with Awesome",
-          reviews: [ ]
+          reviews: [
+            { body: "This product is awesome!", stars: 5, author: "fanboy@apple.com" },
+            { body: "Would not buy again...", stars: 1, author: "hater@losers.com" },
+          ],
         },
         { name: 'Some Other Awesome Product', price: 123.45,
           images: [
