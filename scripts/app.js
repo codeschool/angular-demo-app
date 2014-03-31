@@ -26,26 +26,6 @@
         },
       ];
     })
-    .controller("ReviewController", function(){
-      var Review = function(){
-        return {
-          body: null,
-          stars: 5,
-          author: null,
-          isEmpty: function(){
-            return !(this.body || this.author);
-          },
-        };
-      };
-
-      this.review = new Review;
-
-      this.addReview = function(reviews){
-        reviews.push(this.review);
-
-        this.review = new Review;
-      }
-    })
     .directive("productTitle", function(){
       return {
         replace: true,
@@ -105,7 +85,26 @@
       return {
         replace: true,
         restrict: 'E',
-        controller: 'ReviewController',
+        controller: function(){
+          var Review = function(){
+            return {
+              body: null,
+              stars: 5,
+              author: null,
+              isEmpty: function(){
+                return !(this.body || this.author);
+              },
+            };
+          };
+
+          this.review = new Review;
+
+          this.addReview = function(reviews){
+            reviews.push(this.review);
+
+            this.review = new Review;
+          }
+        },
         controllerAs: 'reviews',
         templateUrl: 'product-review-form.html',
       };
