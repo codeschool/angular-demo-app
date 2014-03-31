@@ -96,6 +96,9 @@
         replace: true,
         restrict: 'E',
         templateUrl: 'product-review.html',
+        scope: {
+          review: '=review',
+        },
       };
     })
   ; // END module(store)

@@ -13,17 +13,15 @@
   <div class="panel" ng-show="panels.isCurrent(3)">
     <h4> Reviews </h4>
 
-    <product-review ng-repeat="review in product.reviews"></product-review>
+    <product-review ng-repeat="review in product.reviews"
+        review="review"></product-review>
 
     <form class="form-horizontal" ng-controller="ReviewController as reviews"
         ng-submit="reviews.addReview(product.reviews)">
-      <blockquote class="well live-preview"
-          ng-show="!reviews.review.isEmpty()">
-        <p> {{reviews.review.body}} </p>
-
-        <b>Stars: {{reviews.review.stars}}</b>
-        <cite>by: {{reviews.review.author}}</a>
-      </blockquote>
+      <product-review class="well live-preview"
+          ng-show="!reviews.review.isEmpty()"
+          review="reviews.review">
+      </product-review>
 
       <fieldset class="form-group">
         <label>Your Review:</label>
