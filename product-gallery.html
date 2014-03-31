@@ -1,0 +1,9 @@
+<section class="images clearfix" ng-controller="GalleryController as gallery" ng-show="product.images.length">
+  <span class="pull-right thumbnail"> <img class="full" ng-src="images/{{gallery.getCurrent(product.images).full}}"> </span>
+  <ul class="list-unstyled pull-left">
+    <li ng-repeat="image in product.images">
+      <a href ng-click="gallery.setCurrent($index)" class="thumbnail">
+        <img class="thumb" ng-src="images/{{image.thumb}}"></a>
+  </ul>
+</section>
+

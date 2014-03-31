@@ -8,14 +8,10 @@
 </head>
 <body class="container">
   <ul class="products list-unstyled" ng-controller="StoreController as store">
-    <li ng-repeat="product in store.products">
+    <li class="row" ng-repeat="product in store.products">
       <h3> <product-title /> </h3>
 
-      <section class="images" ng-controller="GalleryController as gallery" ng-show="product.images.length">
-        <img class="full" ng-src="{{image.full}}" ng-repeat="image in product.images" ng-show="gallery.isCurrent(image)">
-        <a href="" ng-click="gallery.setCurrent(image)" class="thumbnail" ng-repeat="image in product.images">
-          <img class="thumb" ng-src="{{image.thumb}}"></a>
-      </section>
+      <product-gallery></product-gallery>
 
       <aside class="panels" ng-controller="PanelController as panels">
         <ul class="nav nav-pills">
@@ -53,6 +49,8 @@
           </div>
         </div>
       </aside> <!-- class="panels" -->
+
+      <br class="clearfix" />
     </li>
   </ul> <!-- class="products" -->
   <script type="text/javascript" src="scripts/angular.min.js"></script>
