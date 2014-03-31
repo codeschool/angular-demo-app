@@ -1,0 +1,30 @@
+<form class="form-horizontal"
+    ng-submit="reviews.addReview(product.reviews)">
+  <product-review class="well live-preview"
+      ng-show="!reviews.review.isEmpty()"
+      review="reviews.review">
+  </product-review>
+
+  <fieldset class="form-group">
+    <label>Your Review:</label>
+    <textarea class="form-control" rows="5"
+        ng-model="reviews.review.body"></textarea>
+  </fieldset>
+  <fieldset class="form-group">
+    <label>Stars:</label>
+    <select ng-model="reviews.review.stars">
+      <option value="5">5 stars</option>
+      <option value="4">4 stars</option>
+      <option value="3">3 stars</option>
+      <option value="2">2 stars</option>
+      <option value="1">1 star</option>
+    </select>
+  </fieldset>
+  <fieldset class="form-group">
+    <label>by:</label>
+    <input type="email" placeholder="someone@example.com"
+        ng-model="reviews.review.author">
+  </fieldset>
+  <button type="submit" class="btn btn-primary pull-right">Submit</button>
+</form>
+

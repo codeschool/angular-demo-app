@@ -101,5 +101,14 @@
         },
       };
     })
+    .directive("productReviewForm", function(){
+      return {
+        replace: true,
+        restrict: 'E',
+        controller: 'ReviewController',
+        controllerAs: 'reviews',
+        templateUrl: 'product-review-form.html',
+      };
+    })
   ; // END module(store)
 })();
