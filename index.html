@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="store">
+<head>
+  <meta charset="UTF-8">
+  <title> AngularJS Example Store </title>
+  <link rel="stylesheet" href="styles/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="styles/app.css" type="text/css">
+</head>
+<body class="container">
+  <ul class="products list-unstyled" ng-controller="StoreController as store">
+    <li ng-repeat="product in store.products">
+      <h3> {{product.name}} <em class="pull-right">{{product.price | currency}}</em> </h3>
+
+      <section class="images" ng-controller="GalleryController as gallery" ng-show="product.images.length">
+        <img class="full" ng-src="{{image.full}}" ng-repeat="image in product.images" ng-show="gallery.isCurrent(image)">
+        <a href="" ng-click="gallery.setCurrent(image)" class="thumbnail" ng-repeat="image in product.images">
+          <img class="thumb" ng-src="{{image.thumb}}"></a>
+      </section>
+
+      <aside class="panels" ng-controller="PanelController as panels">
+        <ul class="nav nav-pills">
+          <li><a href ng-click="panels.setCurrent(1)">Description</a></li>
+          <li><a href ng-click="panels.setCurrent(2)">Specifications</a></li>
+          <li><a href ng-click="panels.setCurrent(3)">Reviews</a></li>
+        </ul>
+        <div class="panel" ng-show="panels.isCurrent(1)">
+          <h4> Description </h4>
+        </div>
+        <div class="panel" ng-show="panels.isCurrent(2)">
+          <h4> Specifications </h4>
+        </div>
+        <div class="panel" ng-show="panels.isCurrent(3)">
+          <h4> Reviews </h4>
+
+          <div ng-init="discussion.reviews = product.reviews">
+            <blockquote class="review" ng-repeat="review in product.reviews">
+              {{review.body}}
+              <cite>by: {{review.author}}</cite>
+            </blockquote>
+
+            <form class="form-horizontal" ng-controller="ReviewController as reviews"
+                ng-submit="discussion.addReview(product.reviews)">
+              <fieldset class="form-group">
+                <label>Your Review:</label>
+                <textarea class="form-control" rows="5"></textarea>
+              </fieldset>
+              <fieldset class="form-group">
+                <label>by:</label>
+                <input type="email" placeholder="someone@example.com">
+              </fieldset>
+              <button class="btn btn-primary pull-right">Submit</button>
+            </form>
+          </div>
+        </div>
+      </aside> <!-- class="panels" -->
+    </li>
+  </ul> <!-- class="products" -->
+  <script type="text/javascript" src="scripts/angular.min.js"></script>
+  <script type="text/javascript" src="scripts/app.js"></script>
+</body>
+</html>
