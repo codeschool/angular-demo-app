@@ -13,24 +13,44 @@
   <div class="panel" ng-show="panels.isCurrent(3)">
     <h4> Reviews </h4>
 
-    <div ng-init="discussion.reviews = product.reviews">
-      <blockquote class="review" ng-repeat="review in product.reviews">
-        {{review.body}}
-        <cite>by: {{review.author}}</cite>
+    <blockquote ng-repeat="review in product.reviews">
+      <p> {{review.body}} </p>
+
+      <b>Stars: {{review.stars}}</b>
+      <cite>by: {{review.author}}</cite>
+    </blockquote>
+
+    <form class="form-horizontal" ng-controller="ReviewController as reviews"
+        ng-submit="reviews.addReview(product.reviews)">
+      <blockquote class="well live-preview"
+          ng-show="!reviews.review.isEmpty()">
+        <p> {{reviews.review.body}} </p>
+
+        <b>Stars: {{reviews.review.stars}}</b>
+        <cite>by: {{reviews.review.author}}</a>
       </blockquote>
 
-      <form class="form-horizontal" ng-controller="ReviewController as reviews"
-          ng-submit="discussion.addReview(product.reviews)">
-        <fieldset class="form-group">
-          <label>Your Review:</label>
-          <textarea class="form-control" rows="5"></textarea>
-        </fieldset>
-        <fieldset class="form-group">
-          <label>by:</label>
-          <input type="email" placeholder="someone@example.com">
-        </fieldset>
-        <button class="btn btn-primary pull-right">Submit</button>
-      </form>
-    </div>
+      <fieldset class="form-group">
+        <label>Your Review:</label>
+        <textarea class="form-control" rows="5"
+            ng-model="reviews.review.body"></textarea>
+      </fieldset>
+      <fieldset class="form-group">
+        <label>Stars:</label>
+        <select ng-model="reviews.review.stars">
+          <option value="5">5 stars</option>
+          <option value="4">4 stars</option>
+          <option value="3">3 stars</option>
+          <option value="2">2 stars</option>
+          <option value="1">1 star</option>
+        </select>
+      </fieldset>
+      <fieldset class="form-group">
+        <label>by:</label>
+        <input type="email" placeholder="someone@example.com"
+            ng-model="reviews.review.author">
+      </fieldset>
+      <button type="submit" class="btn btn-primary pull-right">Submit</button>
+    </form>
   </div>
 </aside>

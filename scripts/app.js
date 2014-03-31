@@ -24,15 +24,25 @@
       ];
     })
     .controller("ReviewController", function(){
-      this.review = { };
+      var Review = function(){
+        return {
+          body: null,
+          stars: 5,
+          author: null,
+          isEmpty: function(){
+            return !(this.body || this.author);
+          },
+        };
+      };
+
+      this.review = new Review;
 
       this.addReview = function(reviews){
         reviews.push(this.review);
 
-        this.review = { };
+        this.review = new Review;
       }
     })
-
     .directive("productTitle", function(){
       return {
         replace: true,
