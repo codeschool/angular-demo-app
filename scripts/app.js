@@ -91,5 +91,12 @@
         templateUrl: 'product-panels.html',
       };
     })
+    .directive("productReview", function(){
+      return {
+        replace: true,
+        restrict: 'E',
+        templateUrl: 'product-review.html',
+      };
+    })
   ; // END module(store)
 })();

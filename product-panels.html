@@ -13,12 +13,7 @@
   <div class="panel" ng-show="panels.isCurrent(3)">
     <h4> Reviews </h4>
 
-    <blockquote ng-repeat="review in product.reviews">
-      <p> {{review.body}} </p>
-
-      <b>Stars: {{review.stars}}</b>
-      <cite>by: {{review.author}}</cite>
-    </blockquote>
+    <product-review ng-repeat="review in product.reviews"></product-review>
 
     <form class="form-horizontal" ng-controller="ReviewController as reviews"
         ng-submit="reviews.addReview(product.reviews)">
