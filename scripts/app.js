@@ -72,7 +72,7 @@
 
           this.isCurrent = function(index){
             return index === current;
-          ;
+          };
         },
         controllerAs: 'panels',
         templateUrl: 'product-panels.html',
