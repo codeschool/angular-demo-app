@@ -23,17 +23,6 @@
         },
       ];
     })
-    .controller("GalleryController", function(){
-      var current = 0;
-
-      this.setCurrent = function(index){
-        current = index;
-      };
-
-      this.getCurrent = function(images){
-        return images[current];
-      };
-    })
     .controller("PanelController", function(){
       var current = 1;
 
@@ -66,7 +55,17 @@
       return {
         replace: true,
         restrict: 'E',
-        controller: 'GalleryController',
+        controller: function(){
+          var current = 0;
+
+          this.setCurrent = function(index){
+            current = index;
+          };
+
+          this.getCurrent = function(images){
+            return images[current];
+          };
+        },
         controllerAs: 'gallery',
         templateUrl: 'product-gallery.html',
       };
