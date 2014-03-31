@@ -66,6 +66,8 @@
       return {
         replace: true,
         restrict: 'E',
+        controller: 'GalleryController',
+        controllerAs: 'gallery',
         templateUrl: 'product-gallery.html',
       };
     })
