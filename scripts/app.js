@@ -105,8 +105,11 @@
             this.review = new Review;
           }
         },
-        controllerAs: 'reviews',
+        controllerAs: 'reviewer',
         templateUrl: 'product-review-form.html',
+        scope: {
+          reviews: '='
+        }
       };
     })
   ; // END module(store)
